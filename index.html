@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eclipse CDN - By Mizzery</title>
-  <meta name="description" content="Eclipse CDN delivers your GitHub assets at lightning speed via Cloudflare's global edge network. Drop-in jsDelivr alternative." />
+  <title>Eclipse CDN — Fast. Free. GitHub-Powered.</title>
+  <meta name="description" content="Eclipse CDN delivers your GitHub assets at lightning speed via a service worker. Drop-in jsDelivr alternative, no server required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -759,7 +759,7 @@
     <p>Eclipse CDN turns any GitHub repository into an instant, globally distributed asset network. No config. No cost.</p>
 
     <div class="hero-url-builder">
-      <span class="url-prefix">eclipsecdnworker.eclipseservice.workers.dev</span>
+      <span class="url-prefix">cdn.eclipsesuite.org</span>
       <input class="url-input" id="urlInput" type="text" placeholder="/gh/user/repo@version/file.js" spellcheck="false" />
       <button class="url-copy-btn" onclick="copyUrl()">
         <i class="fa-solid fa-copy"></i> Copy URL
@@ -795,8 +795,8 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-          <h3>Global Edge Network</h3>
-          <p>Served via Cloudflare Workers across 300+ data centers. Files are cached at the edge closest to your users automatically.</p>
+          <h3>Service Worker Powered</h3>
+          <p>Runs entirely in the browser via a service worker. No backend, no server required — assets are intercepted and delivered instantly at the client level.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><i class="fa-solid fa-lock-open"></i></div>
@@ -815,8 +815,8 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Zero Config Deploy</h3>
-          <p>One <code class="inline-code">wrangler deploy</code> and you're live. No origin servers, no storage buckets, no infrastructure headaches.</p>
+          <h3>Zero Backend</h3>
+          <p>Entirely static — just drop <code class="inline-code">sw.js</code> and <code class="inline-code">register.js</code> onto any static host and you're live. No servers, no workers, no infrastructure.</p>
         </div>
       </div>
     </div>
@@ -855,7 +855,7 @@
             <p>All Eclipse CDN URLs follow a consistent pattern. Currently, only GitHub repositories are supported.</p>
             <div class="code-block">
               <span class="code-label">pattern</span>
-              <code>https://eclipsecdnworker.eclipseservice.workers.dev/gh/<span class="token-amber">:user</span>/<span class="token-amber">:repo</span><span class="token-green">@:version</span>/<span class="token-blue">:file</span></code>
+              <code>https://cdn.eclipsesuite.org/gh/<span class="token-amber">:user</span>/<span class="token-amber">:repo</span><span class="token-green">@:version</span>/<span class="token-blue">:file</span></code>
             </div>
             <table class="doc-table">
               <thead><tr><th>Segment</th><th>Description</th><th>Example</th></tr></thead>
@@ -869,7 +869,7 @@
             </table>
             <div class="doc-callout">
               <i class="fa-solid fa-circle-info"></i>
-              <p><strong>Note:</strong> Only public GitHub repositories are supported. Private repositories require a personal access token configured in the worker environment.</p>
+              <p><strong>Note:</strong> Only public GitHub repositories are supported.</p>
             </div>
           </div>
 
@@ -903,26 +903,26 @@
             <p>Drop-in examples for common use cases — load anything from any public GitHub repo.</p>
             <div class="code-block">
               <span class="code-label">HTML — script tag</span>
-              <code><span class="token-gray">&lt;script src="</span><span class="token-amber">https://eclipsecdnworker.eclipseservice.workers.dev/gh/jquery/jquery@3.7.1/dist/jquery.min.js</span><span class="token-gray">"&gt;&lt;/script&gt;</span></code>
+              <code><span class="token-gray">&lt;script src="</span><span class="token-amber">https://cdn.eclipsesuite.org/gh/jquery/jquery@3.7.1/dist/jquery.min.js</span><span class="token-gray">"&gt;&lt;/script&gt;</span></code>
             </div>
             <div class="code-block">
               <span class="code-label">HTML — stylesheet</span>
-              <code><span class="token-gray">&lt;link rel="stylesheet" href="</span><span class="token-amber">https://eclipsecdnworker.eclipseservice.workers.dev/gh/twbs/bootstrap@5.3.3/dist/css/bootstrap.min.css</span><span class="token-gray">"&gt;</span></code>
+              <code><span class="token-gray">&lt;link rel="stylesheet" href="</span><span class="token-amber">https://cdn.eclipsesuite.org/gh/twbs/bootstrap@5.3.3/dist/css/bootstrap.min.css</span><span class="token-gray">"&gt;</span></code>
             </div>
             <div class="code-block">
               <span class="code-label">JavaScript — dynamic import</span>
               <code><span class="token-blue">const</span> mod = <span class="token-blue">await</span> <span class="token-green">import</span>(
-  <span class="token-amber">"https://eclipsecdnworker.eclipseservice.workers.dev/gh/user/repo@1.0.0/src/module.js"</span>
+  <span class="token-amber">"https://cdn.eclipsesuite.org/gh/user/repo@1.0.0/src/module.js"</span>
 );</code>
             </div>
             <div class="code-block">
               <span class="code-label">CSS — @import</span>
-              <code><span class="token-green">@import</span> url(<span class="token-amber">"https://eclipsecdnworker.eclipseservice.workers.dev/gh/user/repo@main/styles/theme.css"</span>);</code>
+              <code><span class="token-green">@import</span> url(<span class="token-amber">"https://cdn.eclipsesuite.org/gh/user/repo@main/styles/theme.css"</span>);</code>
             </div>
             <div class="code-block">
               <span class="code-label">fetch API</span>
               <code><span class="token-blue">const</span> res = <span class="token-blue">await</span> <span class="token-green">fetch</span>(
-  <span class="token-amber">"https://eclipsecdnworker.eclipseservice.workers.dev/gh/user/repo@latest/data/config.json"</span>
+  <span class="token-amber">"https://cdn.eclipsesuite.org/gh/user/repo@latest/data/config.json"</span>
 );
 <span class="token-blue">const</span> config = <span class="token-blue">await</span> res.<span class="token-green">json</span>();</code>
             </div>
@@ -934,7 +934,6 @@
             <ul class="response-headers-list">
               <li><span>X-Eclipse-CDN</span><span>Always <code class="inline-code">1</code>. Confirms the response passed through Eclipse CDN.</span></li>
               <li><span>X-Eclipse-Source</span><span>The resolved path in <code class="inline-code">gh/user/repo@ref/file</code> format.</span></li>
-              <li><span>X-Eclipse-Upstream</span><span>The exact raw.githubusercontent.com URL fetched upstream.</span></li>
               <li><span>Cache-Control</span><span><code class="inline-code">immutable</code> for tags/commits; stale-while-revalidate for branches.</span></li>
               <li><span>Content-Type</span><span>Automatically detected from file extension.</span></li>
               <li><span>Access-Control-Allow-Origin</span><span><code class="inline-code">*</code> — CORS open for all origins.</span></li>
@@ -944,19 +943,19 @@
 
           <div class="doc-section" id="doc-caching">
             <h3>Caching Strategy</h3>
-            <p>Eclipse CDN uses Cloudflare's edge cache and an optional KV namespace to maximize performance and minimize GitHub API calls.</p>
+            <p>Eclipse CDN uses the browser's Cache API (via the service worker) to store fetched files locally, so repeat requests are served instantly without hitting GitHub again.</p>
             <table class="doc-table">
-              <thead><tr><th>Ref Type</th><th>Cache-Control</th><th>TTL</th></tr></thead>
+              <thead><tr><th>Ref Type</th><th>Cache-Control</th><th>Cached Locally</th></tr></thead>
               <tbody>
-                <tr><td>Tag / Release (e.g. @1.0.0)</td><td>public, immutable</td><td>24 hours (edge)</td></tr>
-                <tr><td>Commit SHA</td><td>public, immutable</td><td>24 hours (edge)</td></tr>
-                <tr><td>@latest</td><td>public, stale-while-revalidate</td><td>1 hour + 24h stale</td></tr>
-                <tr><td>Branch (main, master, etc.)</td><td>public, stale-while-revalidate</td><td>1 hour + 24h stale</td></tr>
+                <tr><td>Tag / Release (e.g. @1.0.0)</td><td>public, immutable</td><td>Yes — indefinitely</td></tr>
+                <tr><td>Commit SHA</td><td>public, immutable</td><td>Yes — indefinitely</td></tr>
+                <tr><td>@latest</td><td>public, stale-while-revalidate</td><td>No — always re-fetched</td></tr>
+                <tr><td>Branch (main, master, etc.)</td><td>public, stale-while-revalidate</td><td>No — always re-fetched</td></tr>
               </tbody>
             </table>
             <div class="doc-callout">
               <i class="fa-solid fa-circle-info"></i>
-              <p>KV caching stores resolved <code class="inline-code">@latest</code> tag lookups for 1 hour to avoid hitting the GitHub API on every request. Configure the <code class="inline-code">ECLIPSE_CACHE</code> KV binding in your <code class="inline-code">wrangler.toml</code> to enable this.</p>
+              <p>Immutable refs (tags and commit SHAs) are stored in the browser Cache API and served instantly on repeat visits. Branches and <code class="inline-code">@latest</code> always fetch fresh from GitHub.</p>
             </div>
           </div>
 
@@ -989,25 +988,23 @@
 
           <div class="doc-section" id="doc-deploy">
             <h3>Self-Hosting</h3>
-            <p>Eclipse CDN is open source and designed to be trivially deployable on your own Cloudflare account in under five minutes.</p>
+            <p>Eclipse CDN is entirely static — no backend required. Just drop three files onto any static host (GitHub Pages, Netlify, Vercel, etc.).</p>
             <div class="code-block">
-              <span class="code-label">1 — clone &amp; install</span>
-              <code><span class="token-green">git clone</span> https://github.com/xXmizzeryXx/eclipse-cdn
-<span class="token-green">cd</span> eclipse-cdn
-<span class="token-green">npm install</span> -g wrangler</code>
+              <span class="code-label">files needed</span>
+              <code><span class="token-amber">index.html</span>   <span class="token-gray">— the website</span>
+<span class="token-amber">sw.js</span>        <span class="token-gray">— the service worker (must be at root)</span>
+<span class="token-amber">register.js</span>  <span class="token-gray">— registers the service worker</span></code>
             </div>
             <div class="code-block">
-              <span class="code-label">2 — create KV namespace</span>
-              <code><span class="token-green">wrangler kv:namespace create</span> <span class="token-amber">ECLIPSE_CACHE</span>
-<span class="token-gray"># Copy the id into wrangler.toml</span></code>
-            </div>
-            <div class="code-block">
-              <span class="code-label">3 — deploy</span>
-              <code><span class="token-green">wrangler deploy</span></code>
+              <span class="code-label">github pages example</span>
+              <code><span class="token-green">git init</span>
+<span class="token-green">git add</span> index.html sw.js register.js
+<span class="token-green">git commit</span> -m "deploy eclipse cdn"
+<span class="token-green">git push</span> origin main</code>
             </div>
             <div class="doc-callout">
-              <i class="fa-solid fa-key"></i>
-              <p><strong>Optional:</strong> Add a <code class="inline-code">GITHUB_TOKEN</code> secret via <code class="inline-code">wrangler secret put GITHUB_TOKEN</code> to increase your GitHub API rate limit from 60 to 5,000 requests/hour.</p>
+              <i class="fa-solid fa-circle-info"></i>
+              <p><strong>Important:</strong> <code class="inline-code">sw.js</code> must be served from the root of your domain so its scope covers all <code class="inline-code">/gh/</code> paths. If it's in a subdirectory, the service worker won't intercept CDN requests.</p>
             </div>
           </div>
 
@@ -1041,7 +1038,7 @@
           <div class="icon-wrap"><i class="fa-solid fa-bolt"></i></div>
           Eclipse CDN
         </div>
-        <p>Fast, free GitHub asset delivery at Cloudflare's global edge. A jsDelivr alternative for the Eclipse ecosystem.</p>
+        <p>Fast, free GitHub asset delivery powered by a service worker. A jsDelivr alternative for the Eclipse ecosystem.</p>
       </div>
       <div class="footer-links-col">
         <h4>Product</h4>
@@ -1098,7 +1095,7 @@
     const input = document.getElementById('urlInput');
     const val = input.value.trim();
     if (!val) return;
-    const full = 'https://eclipsecdnworker.eclipseservice.workers.dev' + (val.startsWith('/') ? '' : '/') + val;
+    const full = 'https://cdn.eclipsesuite.org' + (val.startsWith('/') ? '' : '/') + val;
     navigator.clipboard.writeText(full).then(() => {
       const btn = document.querySelector('.url-copy-btn');
       const orig = btn.innerHTML;
@@ -1124,5 +1121,6 @@
   });
 </script>
 
+  <script src="/register.js"></script>
 </body>
-</html>
+</html>s
